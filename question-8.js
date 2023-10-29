@@ -9,8 +9,13 @@ const handleResponse = (response) => {
     return response.json();
 };
 
-const displayUsers = (data) => {
-    console.log(data.map(user => user.name));
+const displayUsers = () => {
+    getUsers()
+        .then(handleResponse)
+        .then((data) => {
+            const newUsers = data.map(user => user.name);
+            console.log(newUsers);
+        });
 };
 
 getUsers().then(handleResponse).then(displayUsers);
